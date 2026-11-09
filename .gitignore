@@ -12,21 +12,5 @@ out/
 # Visual Studio
 .vs/
 
-# CLion
-.idea/
-
-# Zed
-.zed/
-
-# Sublime Text
-*.sublime-workspace
-
 # CMake presets
 CMakeUserPresets.json
-
-# MacOS
-.DS_Store/
-
-# Other
-.cache/
-__pycache__/
