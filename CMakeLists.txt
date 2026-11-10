@@ -12,16 +12,22 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-if (NOT DEFINED ENV{GEODE_SDK})
+set(GEODE_SDK_PATH "$ENV{GEODE_SDK}")
+
+if (NOT GEODE_SDK_PATH)
+    set(GEODE_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/..")
+endif()
+
+if (NOT EXISTS "${GEODE_SDK_PATH}/CMakeLists.txt")
     message(FATAL_ERROR
         "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode"
     )
 else()
-    message(STATUS "Found Geode: $ENV{GEODE_SDK}")
+    message(STATUS "Found Geode: ${GEODE_SDK_PATH}")
 endif()
 
 add_subdirectory(
-    "$ENV{GEODE_SDK}"
+    "${GEODE_SDK_PATH}"
     "${CMAKE_CURRENT_BINARY_DIR}/geode"
 )
 
