@@ -1,2 +1,2 @@
 # 1.0.0
-## Un botón en el menú principal
+## Add a button to the main menu
